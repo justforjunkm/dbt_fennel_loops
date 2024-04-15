@@ -12,8 +12,7 @@
     -- use CASE WHEN ... THEN ... ELSE ... END statements.
     -- depending on which dimension columns you want to keep, it will require 6-9 fields for the GROUP BY
 
-
--- weekly aggregation of the conditions, weather, humidity, windspeed,
+-- weekly aggregation of the conditions, weather, humidity, windspeed
 
 /*
 SELECT * 

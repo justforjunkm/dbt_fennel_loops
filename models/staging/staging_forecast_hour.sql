@@ -41,5 +41,4 @@ forecast_hour_data AS (
             ,(hour_data ->> 'uv')::NUMERIC AS uv
     FROM forecast_hour_raw
     )
-SELECT * 
-FROM forecast_hour_data
+SELECT * FROM forecast_hour_data;
