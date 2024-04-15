@@ -10,5 +10,4 @@ add_features AS (
         ,TO_CHAR(date_time, 'day') AS day_of_week -- weekday name as text
     FROM forecast_hour_data
 )
-SELECT *
-FROM add_features
+SELECT * FROM add_features
