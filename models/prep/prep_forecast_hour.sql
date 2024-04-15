@@ -1,6 +1,6 @@
 WITH forecast_hour_data AS (    -- using common table expressions
     SELECT * 
-    FROM {{ref('staging_forecast_hour')}}  -- using jinja with ref {{}} > double curly brackets are jinja, because we are in dbt. we need to use jinja to refer to certain table for sql to find it
+    FROM {{ref('staging_forecast_hour')}}  
 ),
 add_features AS (
     SELECT *
@@ -10,4 +10,6 @@ add_features AS (
         ,TO_CHAR(date_time, 'day') AS day_of_week -- weekday name as text
     FROM forecast_hour_data
 )
-SELECT * FROM add_features
+SELECT * FROM add_features;
+
+-- using jinja with ref {{}} > double curly brackets are jinja, because we are in dbt. we need to use jinja to refer to certain table for sql to find it
