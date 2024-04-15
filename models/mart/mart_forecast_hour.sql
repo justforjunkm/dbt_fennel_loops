@@ -96,7 +96,7 @@ select * from filtering_ordering_features;
 with joining_hour_location as
 (
         SELECT * 
-        FROM {{ref('prep_forecast_hour')}}   -- using jinja with ref {{}} > double curly brackets are jinja, because we are in dbt. we need to use jinja to refer to certain table for sql to find it
+        FROM {{ref('prep_forecast_hour')}}   
         LEFT JOIN {{ref('staging_location')}}
         USING (city, region, country)
 ),
