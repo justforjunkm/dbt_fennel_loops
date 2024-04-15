@@ -13,4 +13,4 @@ add_features AS (
 
     FROM forecast_day_data
 )
-SELECT * FROM add_features;
+SELECT * FROM add_features
