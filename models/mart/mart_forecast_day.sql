@@ -85,6 +85,7 @@ adding_features AS (
 		       WHEN month_of_year IN ('september', 'october  ', 'november ') THEN 'Fall'
 		       ELSE 'Unknown' END) as season
 		    , max_temp_c - min_temp_c AS temp_range
+		    ,(CASE WHEN day_of_week IN ('saturday ', 'sunday   ') THEN 1 ELSE 0 END) as weekend
         FROM joining_day_location
 ),
 
@@ -129,6 +130,7 @@ filtering_ordering_features AS (
             ,sunset_n-sunrise_n AS daylight_hours
             ,season
             ,temp_range
+            ,weekend
         FROM adding_features
 )
 
@@ -158,6 +160,7 @@ adding_features AS (
 		       WHEN month_of_year IN ('september', 'october  ', 'november ') THEN 'Fall'
 		       ELSE 'Unknown' END) as season
 		    , max_temp_c - min_temp_c AS temp_range
+		    ,(CASE WHEN day_of_week IN ('saturday ', 'sunday   ') THEN 1 ELSE 0 END) as weekend
         FROM joining_day_location
 ),
 filtering_ordering_features AS (
@@ -201,6 +204,7 @@ filtering_ordering_features AS (
             ,sunset_n-sunrise_n AS daylight_hours
             ,season
             ,temp_range
+            ,weekend
         FROM adding_features
 )
 SELECT * FROM filtering_ordering_features
