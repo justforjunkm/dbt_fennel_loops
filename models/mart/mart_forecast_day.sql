@@ -79,6 +79,12 @@ adding_features AS (
             ,(CASE WHEN moonset = 'No moonset' THEN null ELSE moonset END)::TIME AS moonset_n
             ,(CASE WHEN sunrise = 'No sunrise' THEN null ELSE sunrise END)::TIME AS sunrise_n
             ,(CASE WHEN sunset = 'No sunset' THEN null ELSE sunset END)::TIME AS sunset_n
+       		,(CASE WHEN month_of_year IN ('december ', 'january  ', 'february ') THEN 'Winter'
+		       WHEN month_of_year IN ('march    ', 'april    ', 'may      ') THEN 'Spring'
+		       WHEN month_of_year IN ('june     ', 'july     ', 'august   ') THEN 'Summer'
+		       WHEN month_of_year IN ('september', 'october  ', 'november ') THEN 'Fall'
+		       ELSE 'Unknown' END) as season
+		    , max_temp_c - min_temp_c AS temp_range
         FROM joining_day_location
 ),
 
@@ -120,6 +126,9 @@ filtering_ordering_features AS (
             ,moonset_n
             ,moon_phase
             ,moon_illumination
+            ,sunset_n-sunrise_n AS daylight_hours
+            ,season
+            ,temp_range
         FROM adding_features
 )
 
@@ -143,6 +152,12 @@ adding_features AS (
             ,(CASE WHEN moonset = 'No moonset' THEN null ELSE moonset END)::TIME AS moonset_n
             ,(CASE WHEN sunrise = 'No sunrise' THEN null ELSE sunrise END)::TIME AS sunrise_n
             ,(CASE WHEN sunset = 'No sunset' THEN null ELSE sunset END)::TIME AS sunset_n
+            ,(CASE WHEN month_of_year IN ('december ', 'january  ', 'february ') THEN 'Winter'
+		       WHEN month_of_year IN ('march    ', 'april    ', 'may      ') THEN 'Spring'
+		       WHEN month_of_year IN ('june     ', 'july     ', 'august   ') THEN 'Summer'
+		       WHEN month_of_year IN ('september', 'october  ', 'november ') THEN 'Fall'
+		       ELSE 'Unknown' END) as season
+		    , max_temp_c - min_temp_c AS temp_range
         FROM joining_day_location
 ),
 filtering_ordering_features AS (
@@ -183,6 +198,9 @@ filtering_ordering_features AS (
             ,moonset_n
             ,moon_phase
             ,moon_illumination
+            ,sunset_n-sunrise_n AS daylight_hours
+            ,season
+            ,temp_range
         FROM adding_features
 )
 SELECT * FROM filtering_ordering_features
