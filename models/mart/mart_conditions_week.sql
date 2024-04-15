@@ -378,4 +378,4 @@ aggregation_week as
 			order by city
 )
 
-select * from aggregation_week;
+select * from aggregation_week

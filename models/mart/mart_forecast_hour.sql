@@ -149,4 +149,4 @@ filtering_ordering_features as
          from adding_features
 )
 
-select * from filtering_ordering_features;
+select * from filtering_ordering_features

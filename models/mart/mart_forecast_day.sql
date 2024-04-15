@@ -185,4 +185,4 @@ filtering_ordering_features AS (
             ,moon_illumination
         FROM adding_features
 )
-SELECT * FROM filtering_ordering_features;
+SELECT * FROM filtering_ordering_features
