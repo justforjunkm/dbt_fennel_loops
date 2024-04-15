@@ -12,4 +12,3 @@ add_features AS (
 )
 SELECT * FROM add_features;
 
--- using jinja with ref {{}} > double curly brackets are jinja, because we are in dbt. we need to use jinja to refer to certain table for sql to find it
