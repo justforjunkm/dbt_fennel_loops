@@ -161,7 +161,7 @@ filtering_columns as
 			from joining_day_location
 ),
 
-aggregation_week as 
+aggregation_month as 
 (
 			select		
             year           -- grouping ON
@@ -229,7 +229,7 @@ aggregation_week as
 			order by 				city, year, to_date(month_of_year,'month')
 )
 
-select * from aggregation_week;
+select * from aggregation_month;
 
 */
 -------------------------------------------------------------------------------------------------------------
@@ -286,7 +286,7 @@ filtering_columns as
 			from joining_day_location
 ),
 
-aggregation_week as 
+aggregation_month as 
 (
 			select		
             year           -- grouping ON
@@ -354,4 +354,4 @@ aggregation_week as
 			order by 				city, year, to_date(month_of_year,'month')
 )
 
-select * from aggregation_week
+select * from aggregation_month
